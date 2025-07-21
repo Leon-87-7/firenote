@@ -8,7 +8,7 @@ export default function Logo() {
           height: '1.7rem',
           marginRight: '0.3rem',
         }}
-        src="../public/note.svg"
+        src="./note.svg"
         alt="logo"
       />
       <span
