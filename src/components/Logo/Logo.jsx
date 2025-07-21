@@ -1,6 +1,8 @@
+import './Logo.css';
+
 export default function Logo() {
   return (
-    <>
+    <div className="logo">
       <img
         style={{
           height: '1.7rem',
@@ -16,6 +18,6 @@ export default function Logo() {
       >
         My Notes App
       </span>
-    </>
+    </div>
   );
 }
