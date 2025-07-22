@@ -7,7 +7,7 @@ import NoteEditor from './components/NoteEditor';
 import './styles/App.css';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setDarkMode(!darkMode);
@@ -17,14 +17,16 @@ function App() {
     );
   };
   return (
-    <div className="App-wrapper">
-      <DarkLightToggle
-        toggleTheme={toggleTheme}
-        darkMode={darkMode}
-      />
-      <SideMenu />
-      <NoteEditor />
-    </div>
+    <>
+      <div className="App-wrapper">
+        <DarkLightToggle
+          toggleTheme={toggleTheme}
+          darkMode={darkMode}
+        />
+        <SideMenu />
+        <NoteEditor />
+      </div>
+    </>
   );
 }
 

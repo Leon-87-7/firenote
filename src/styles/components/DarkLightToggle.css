@@ -1,4 +1,8 @@
 .toggle-btn {
-
-  button {}
+  aspect-ratio: 2/1;
+  height: var(--sp-24);
+  background-color: var(--clr-txt-primary);
+  margin: var(--sp-8);
+  position: absolute;
+  right: 0;
 }

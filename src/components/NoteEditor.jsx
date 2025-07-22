@@ -2,19 +2,21 @@ import '../styles/components/NoteEditor.css';
 const NoteEditor = () => {
   return (
     <div className="Editor-wrapper">
-      <div className="save-indicator">Saved!</div>
+      <span className="save-indicator">Saved!</span>
       <div>
-        Title
+        <span>Title</span>
         <input
+          className="editor-fields"
           type="text"
           placeholder="Your title here"
         />
       </div>
       <div>
-        Note
+        <span>Note</span>
         <textarea
+          className="editor-fields"
           placeholder="You content here"
-          name=""
+          spellCheck="true"
           id=""
         ></textarea>
       </div>

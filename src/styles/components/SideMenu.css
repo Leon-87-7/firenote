@@ -1,7 +1,7 @@
 .container {
   background-color: var(--clr-primary);
   color: var(--clr-txt-primary);
-  max-width: 20dvw;
-  padding: 0.3rem;
+  padding: var(--sp-4);
   border-right: 2px solid var(--clr-border);
+  box-shadow: 0px 2px 16px 0px rgba(14, 30, 37, 0.42);
 }

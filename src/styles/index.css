@@ -31,14 +31,31 @@
   --fw-bold: 800;
   --fw-bolder: 900;
   /* spaces */
+  --sp-4: 0.25rem;
   --sp-8: 0.5rem;
+  --sp-12: 0.75rem;
   --sp-16: 1rem;
+  --sp-20: 1.25rem;
   --sp-24: 1.5rem;
+  --sp-28: 1.75rem;
   --sp-32: 2rem;
+  --sp-36: 2.25rem;
   --sp-40: 2.5rem;
+  --sp-44: 2.75rem;
   --sp-48: 3rem;
+  --sp-52: 3.25rem;
   --sp-56: 3.5rem;
+  --sp-60: 3.75rem;
   --sp-64: 4rem;
+  --sp-68: 4.25rem;
+  --sp-72: 4.5rem;
+  --sp-76: 4.75rem;
+  --sp-80: 5rem;
+  --sp-84: 5.25rem;
+  --sp-88: 5.5rem;
+  --sp-92: 5.75rem;
+  --sp-96: 6rem;
+  --sp-100: 6.25rem;
   /* Border variables */
   --border-radius-small: 0.25rem;
   --border-radius-large: 0.75rem;
@@ -88,5 +105,5 @@ button:hover {
 
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 1px auto greenyellow;
 }
