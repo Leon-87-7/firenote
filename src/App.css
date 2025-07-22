@@ -1,0 +1,12 @@
+@import './components/SideMenu/SideMenu.css';
+@import './components/NoteEditor/NoteEditor.css';
+
+
+
+.App-wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  overflow: hidden;
+
+}

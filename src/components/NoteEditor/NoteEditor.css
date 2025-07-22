@@ -1,0 +1,30 @@
+.Editor-wrapper {
+  height: 45rem;
+  padding: 2rem 1rem;
+  margin: 4rem;
+  border: 1px solid red;
+  border-radius: 8px;
+  position: relative;
+}
+
+.Editor-wrapper div {
+  margin: 0 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.save-indicator {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+
+}
+
+input {
+  padding: 0.5rem;
+}
+
+textarea {
+  padding: 0.5rem;
+  height: 35rem;
+}
