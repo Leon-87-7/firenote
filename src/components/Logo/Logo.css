@@ -1,5 +1,16 @@
 .logo {
-  margin: 0.1rem;
+  margin: 2rem;
   display: flex;
   place-items: center;
+
+  img {
+    height: 1.7rem;
+    margin-right: 0.3rem;
+  }
+
+  span {
+    color: black;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
 }

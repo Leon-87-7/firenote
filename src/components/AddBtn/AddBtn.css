@@ -1,4 +1,12 @@
+.Add-container {
+  position: relative;
+
+}
+
 .Add-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   place-items: center;
   justify-content: space-evenly;
