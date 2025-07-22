@@ -1,8 +1,3 @@
-@import './components/SideMenu/SideMenu.css';
-@import './components/NoteEditor/NoteEditor.css';
-
-
-
 .App-wrapper {
   height: 100vh;
   display: grid;
