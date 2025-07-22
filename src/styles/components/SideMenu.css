@@ -1,7 +1,7 @@
 .container {
+  background-color: var(--clr-primary);
+  color: var(--clr-txt-primary);
   max-width: 20dvw;
-  /* height: 100vh; */
   padding: 0.3rem;
-  /* background-color: white; */
-  border-right: 2px solid gray;
+  border-right: 2px solid var(--clr-border);
 }

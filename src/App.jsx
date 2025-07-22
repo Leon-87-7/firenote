@@ -1,15 +1,27 @@
-import Logo from './components/Logo/Logo';
 import { useState } from 'react';
 
-import './App.css';
-import SideMenu from './components/SideMenu/SideMenu';
-import NoteEditor from './components/NoteEditor/NoteEditor';
+import DarkLightToggle from './components/DarkLightToggle';
+import SideMenu from './components/SideMenu';
+import NoteEditor from './components/NoteEditor';
+
+import './styles/App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [darkMode, setDarkMode] = useState(true);
 
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.setAttribute(
+      'data-theme',
+      darkMode ? 'light' : 'dark'
+    );
+  };
   return (
     <div className="App-wrapper">
+      <DarkLightToggle
+        toggleTheme={toggleTheme}
+        darkMode={darkMode}
+      />
       <SideMenu />
       <NoteEditor />
     </div>

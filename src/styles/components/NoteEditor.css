@@ -2,9 +2,11 @@
   height: 45rem;
   padding: 2rem 1rem;
   margin: 4rem;
-  border: 1px solid red;
+  border: 1px solid var(--clr-border);
   border-radius: 8px;
   position: relative;
+  background-color: var(--clr-primary);
+  color: var(--clr-txt-primary);
 }
 
 .Editor-wrapper div {
@@ -17,14 +19,17 @@
   position: absolute;
   right: 1.5rem;
   top: 1rem;
-
 }
 
 input {
   padding: 0.5rem;
+  background-color: var(--clr-primary);
+  border: 1px solid var(--clr-border);
 }
 
 textarea {
+  background-color: var(--clr-primary);
+  border: 1px solid var(--clr-border);
   padding: 0.5rem;
   height: 35rem;
 }

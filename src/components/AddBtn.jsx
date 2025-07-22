@@ -1,4 +1,4 @@
-import './AddBtn.css';
+import '../styles/components/AddBtn.css';
 
 export default function AddBtn() {
   return (
