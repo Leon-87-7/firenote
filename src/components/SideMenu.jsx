@@ -1,5 +1,5 @@
-import AddBtn from '../AddBtn/AddBtn';
-import Logo from '../Logo/Logo';
+import AddBtn from './AddBtn';
+import Logo from './Logo';
 import './SideMenu.css';
 
 const SideMenu = () => {

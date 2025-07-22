@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+:root {
+  /* Color variables using HSL format */
+  --clr-primary: hsl(0, 0%, 100%);
+  --clr-secondary: hsl(233, 90%, 64%);
+  --clr-txt-primary: hsl(223, 18%, 27%);
+  --clr-txt-secondary: hsl(223, 18%, 47%);
+  --clr-border: hsl(0, 0%, 70%);
+
+  --clr-success: hsl(133, 40%, 40%);
+  --clr-danger: hsl(0, 100%, 79%);
+  --clr-warning: hsl(49, 100%, 50%);
+  --clr-info: hsl(148, 51%, 35%);
+  /* Typography sizes */
+  --heading-size: 3rem;
+  --input-size: 1rem;
+  --text-size: 0.8rem;
+  --text-heading-shadow: 0px 3px 18px hsl(0, 0%, 100%);
+  /* font size */
+  --fs-10: 0.625rem --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+  --fs-40: 2.5rem;
+  /* font weight */
+  --fw-norm: 400;
+  --fw-semi-bold: 600;
+  --fw-bold: 800;
+  --fw-bolder: 900;
+  /* spaces */
+  --sp-8: 0.5rem;
+  --sp-16: 1rem;
+  --sp-24: 1.5rem;
+  --sp-32: 2rem;
+  --sp-40: 2.5rem;
+  --sp-48: 3rem;
+  --sp-56: 3.5rem;
+  --sp-64: 4rem;
+  /* Border variables */
+  --border-radius-small: 0.25rem;
+  --border-radius-large: 0.75rem;
+  --border-radius-input-field: 0.75rem 0.75rem 0.25rem 0.25rem;
+  --border-width: 0.125rem;
+
+  font-family: Inter;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--clr-txt-primary);
+  background-color: var(--clr-primary);
+}
+
+[data-theme="dark"] {
+  --clr-primary: hsl(212, 14%, 19%);
+  --clr-secondary: hsl(176, 56%, 55%);
+  --clr-txt-primary: hsl(250, 47%, 85%);
+  --clr-txt-secondary: hsl(250, 47%, 65%);
+  --clr-border: hsl(0, 0%, 70%);
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
