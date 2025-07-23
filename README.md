@@ -4,7 +4,7 @@
 
 This is your ReactJS project. Ensure that each milestone is submitted to your GitHub repository.
 
-### v1.0
+### v1.0 5/8
 
 #### Features
 
@@ -16,20 +16,20 @@ This is your ReactJS project. Ensure that each milestone is submitted to your Gi
 - Build the Note app responsive UI, try and break down the UI to small components as much as you can.
 - Build the routing, make sure to notice the difference between the mobile version and the desktop version.
 
-### v2.0
+### v2.0 12/8
 
 #### Features
 
 - Add priority to the input options with the values low, medium and high
 - Sort the notes by priority
 
-### v2.1
+### v2.1 26/8
 
 #### Features
 
 - Save to firebase instead of localStorage
 
-### v3.0
+### v3.0 9/9
 
 #### Features
 
