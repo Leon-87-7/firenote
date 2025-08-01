@@ -1,30 +1,15 @@
-import { useState } from 'react';
-
-import DarkLightToggle from './components/DarkLightToggle';
-import SideMenu from './components/SideMenu';
-import NoteEditor from './components/NoteEditor';
-
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.setAttribute(
-      'data-theme',
-      darkMode ? 'light' : 'dark'
-    );
-  };
   return (
-    <>
-      <div className="App-wrapper">
-        <DarkLightToggle
-          toggleTheme={toggleTheme}
-          darkMode={darkMode}
-        />
-        <SideMenu />
-        <NoteEditor />
+    <div className="min-h-screen bg-gray-100 p-4">
+      <h1 className="text-3xl font-bold text-red-600 text-center">
+        Notes App
+      </h1>
+      <div className="mt-4 p-4 bg-white rounded-lg shadow-md max-w-md mx-auto">
+        <p className="text-yellow-600 mb">
+          Tailwind CSS is working! 🎉
+        </p>
       </div>
-    </>
+    </div>
   );
 }
 
