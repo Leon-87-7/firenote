@@ -1,4 +1,3 @@
-import '../styles/components/NoteEditor.css';
 const NoteEditor = () => {
   return (
     <div className="Editor-wrapper">

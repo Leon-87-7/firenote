@@ -4,8 +4,6 @@ import DarkLightToggle from './components/DarkLightToggle';
 import SideMenu from './components/SideMenu';
 import NoteEditor from './components/NoteEditor';
 
-import './styles/App.css';
-
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 

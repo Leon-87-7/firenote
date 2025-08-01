@@ -1,5 +1,3 @@
-import '../styles/components/AddBtn.css';
-
 export default function AddBtn() {
   return (
     <div className="Add-container">
