@@ -5,9 +5,7 @@ function App() {
         Notes App
       </h1>
       <div className="mt-4 p-4 bg-white rounded-lg shadow-md max-w-md mx-auto">
-        <p className="text-yellow-600 mb">
-          Tailwind CSS is working! 🎉
-        </p>
+        <p className="text-yellow-600">Tailwind CSS is working! 🎉</p>
       </div>
     </div>
   );
