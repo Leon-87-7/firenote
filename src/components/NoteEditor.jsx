@@ -26,39 +26,34 @@ function NoteEditor({ note, onUpdateNote }) {
     }
   };
 
-  if (!note) {
-    return (
-      <div className="note-editor empty">
-        <p>Select a note to start editing</p>
-      </div>
-    );
-  }
-
   return (
     <div className="note-editor">
-      <div className="form-group">
-        <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          onBlur={handleTitleBlur}
-          placeholder="Your title here"
-          className="title-input"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="content">Note</label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          onBlur={handleContentBlur}
-          placeholder="Your content here"
-          className="content-textarea"
-          rows="15"
-        />
+      <div className="card">
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Title:</span>
+          </div>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onBlur={handleTitleBlur}
+            placeholder="Your title here"
+            className="input input-bordered w-full max-w-xs"
+          />
+        </label>
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text">Note:</span>
+          </div>
+          <textarea
+            className="textarea textarea-bordered h-24"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            onBlur={handleContentBlur}
+            placeholder="Your content here"
+          ></textarea>
+        </label>
       </div>
     </div>
   );
