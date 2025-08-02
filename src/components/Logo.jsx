@@ -1,12 +1,25 @@
-export default function Logo() {
+import SavedIndicator from './SavedIndicator';
+
+export default function Logo({ onBack, showSaved }) {
   return (
-    <div>
+    <div className="flex m-3">
+      {onBack && (
+        <button
+          className="btn text-primary-content text-3xl"
+          onClick={onBack}
+        >
+          ←
+        </button>
+      )}
       <img
         src="./note.svg"
         alt="logo"
-        className="h-6 w-6"
+        className="size-6 m-2"
       />
-      <span>My Notes App</span>
+      <span className="text-4xl font-medium text-primary-content">
+        My Notes App
+      </span>
+      {showSaved && <SavedIndicator />}
     </div>
   );
 }

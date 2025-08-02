@@ -1,4 +1,5 @@
-import AddNoteBtn from './AddNoteBtn';
+import AddBtn from './AddBtn';
+import Logo from './Logo';
 import NotesList from './NotesList';
 
 function SideMenu({
@@ -9,13 +10,11 @@ function SideMenu({
   isMobile,
 }) {
   return (
-    <div className="bg-slate-800 text-orange-300">
-      <div className="">
-        <h1>My Notes App</h1>
-        <AddNoteBtn
-          onClick={onAddNote}
-          className=""
-        />
+    <div className="side-menu flex flex-col">
+      {!isMobile && <Logo />}
+
+      <div className="flex flex-col ">
+        <AddBtn onClick={onAddNote} />
       </div>
       <NotesList
         notes={notes}

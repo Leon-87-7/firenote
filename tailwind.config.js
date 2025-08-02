@@ -96,5 +96,7 @@ export default {
         },
       },
     ],
+    darkTheme: 'brownPinkRoseTheme',
+    styled: true,
   },
 };

@@ -1,14 +1,17 @@
-export default function AddBtn() {
+function AddBtn({ onAddNote }) {
   return (
-    <div className="Add-container">
-      <button className="Add-btn">
-        <img
-          className="plus-svg"
-          src="src\assets\plus.svg"
-          alt=""
-        />
-        <span className="text">Add Note</span>
-      </button>
-    </div>
+    <button
+      className="btn btn-accent capitalize w-32 ml-40 mt-10"
+      onClick={onAddNote}
+    >
+      <img
+        className="plus-svg"
+        src="src\assets\plus.svg"
+        alt=""
+      />
+      add Note
+    </button>
   );
 }
+
+export default AddBtn;

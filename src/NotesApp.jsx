@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
+import Logo from './components/Logo';
 import SideMenu from './components/SideMenu';
+import NoteEditor from './components/NoteEditor';
+import SavedIndicator from './components/SavedIndicator';
 
 function NotesApp() {
   const [notes, setNotes] = useState([]);
@@ -15,20 +18,112 @@ function NotesApp() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  return (
-    <>
-      <div className="min-h-screen bg-gray-100 p-4">
-        <h1 className="text-3xl font-bold text-indigo-600 text-center">
-          Notes App
-        </h1>
-        <div className="mt-4 p-4 bg-white rounded-lg shadow-md max-w-md mx-auto">
-          <p className="text-indigo-700 m-6">
-            Tailwind CSS is working! 🎉
-          </p>
-        </div>
-        <SideMenu />
+
+  useEffect(() => {
+    const savedNotes = localStorage.getItem('notes');
+    if (savedNotes) {
+      const parsedNotes = JSON.parse(savedNotes);
+      setNotes(parsedNotes);
+    }
+  }, []);
+
+  const saveNotesToLocalStorage = (updatedNotes) => {
+    localStorage.setItem('notes', JSON.stringify(updatedNotes));
+  };
+
+  const addNote = () => {
+    const newNote = {
+      id: Date.now(),
+      title: '',
+      content: '',
+      createdAt: new Date().toISOString(),
+    };
+    const updatedNotes = [...notes, newNote];
+    setNotes(updatedNotes);
+    setSelectedNoteId(newNote.id);
+    saveNotesToStorage(updatedNotes);
+
+    if (isMobile) {
+      setShowEditor(true);
+    }
+  };
+
+  const updateNote = (id, field, value) => {
+    const updatedNotes = notes.map((note) =>
+      note.id === id ? { ...note, [field]: value } : note
+    );
+    setNotes(updatedNotes);
+    saveNotesToStorage(updatedNotes);
+
+    // Show saved indicator
+    setShowSaved(true);
+    setTimeout(() => setShowSaved(false), 2000);
+  };
+
+  const selectNote = (id) => {
+    setSelectedNoteId(id);
+    if (isMobile) {
+      setShowEditor(true);
+    }
+  };
+
+  const backToList = () => {
+    setShowEditor(false);
+    setSelectedNoteId(null);
+  };
+
+  const selectedNote = notes.find(
+    (note) => note.id === selectedNoteId
+  );
+
+  if (isMobile) {
+    return (
+      <div className="notes-app mobile">
+        {!showEditor ? (
+          <div className="mobile-list">
+            <Logo />
+            <SideMenu
+              notes={notes}
+              onAddNote={addNote}
+              onSelectNote={selectNote}
+              isMobile={true}
+            />
+          </div>
+        ) : (
+          <div className="mobile-editor">
+            <Logo
+              onBack={backToList}
+              showSaved={showSaved}
+            />
+            <NoteEditor
+              note={selectedNote}
+              onUpdateNote={updateNote}
+            />
+          </div>
+        )}
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="flex flex-col">
+      <div className="notes-app desktop">
+        <SideMenu
+          notes={notes}
+          selectedNoteId={selectedNoteId}
+          onAddNote={addNote}
+          onSelectNote={selectNote}
+          isMobile={isMobile}
+        />
+        <div className="main-content">
+          {showSaved && <SavedIndicator />}
+          <NoteEditor
+            note={selectedNote}
+            onUpdateNote={updateNote}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
