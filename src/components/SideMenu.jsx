@@ -14,7 +14,7 @@ function SideMenu({
       {!isMobile && <Logo />}
 
       <div className="flex flex-col ">
-        <AddBtn onClick={onAddNote} />
+        <AddBtn onAddNote={onAddNote} />
       </div>
       <NotesList
         notes={notes}
