@@ -6,7 +6,7 @@ function AddBtn({ onAddNote }) {
     >
       <img
         className="plus-svg"
-        src="src\assets\plus.svg"
+        src="src/assets/plus.svg"
         alt=""
       />
       add Note

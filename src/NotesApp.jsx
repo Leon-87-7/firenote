@@ -38,10 +38,11 @@ function NotesApp() {
       content: '',
       createdAt: new Date().toISOString(),
     };
+
     const updatedNotes = [...notes, newNote];
     setNotes(updatedNotes);
     setSelectedNoteId(newNote.id);
-    saveNotesToStorage(updatedNotes);
+    saveNotesToLocalStorage(updatedNotes);
 
     if (isMobile) {
       setShowEditor(true);
@@ -53,7 +54,7 @@ function NotesApp() {
       note.id === id ? { ...note, [field]: value } : note
     );
     setNotes(updatedNotes);
-    saveNotesToStorage(updatedNotes);
+    saveNotesToLocalStorage(updatedNotes);
 
     // Show saved indicator
     setShowSaved(true);
