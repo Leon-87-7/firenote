@@ -28,7 +28,10 @@ function DesktopLayout({
   };
 
   return (
-    <div className="flex ">
+    <div
+      className="grid"
+      style={{ gridTemplateColumns: '320px 1fr' }}
+    >
       <SideMenu
         notes={notes}
         selectedNoteId={currentNoteId}

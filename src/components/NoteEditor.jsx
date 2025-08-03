@@ -27,34 +27,37 @@ function NoteEditor({ note, onUpdateNote }) {
   };
 
   return (
-    <div className="note-editor">
-      <div className="card">
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            <span className="label-text">Title:</span>
-          </div>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            onBlur={handleTitleBlur}
-            placeholder="Your title here"
-            className="input input-bordered w-full max-w-xs"
-          />
-        </label>
-        <label className="form-control">
-          <div className="label">
-            <span className="label-text">Note:</span>
-          </div>
-          <textarea
-            className="textarea textarea-bordered h-24 resize-none rounded-md"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            onBlur={handleContentBlur}
-            placeholder="Your content here"
-          ></textarea>
-        </label>
-      </div>
+    <div className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
+      <label className="form-control">
+        <div className="label">
+          <span className="label-text font-medium text-lg">
+            Title:
+          </span>
+        </div>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          onBlur={handleTitleBlur}
+          placeholder="Your title here"
+          className="input input-bordered w-full max-md:input-secondary "
+        />
+      </label>
+
+      <label className="form-control flex-1 flex flex-col">
+        <div className="label">
+          <span className="label-text font-medium text-lg">
+            Note:
+          </span>
+        </div>
+        <textarea
+          className="textarea textarea-bordered w-full resize-none rounded-md max-md:textarea-accent flex-1 max-md:h-full min-h-0"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          onBlur={handleContentBlur}
+          placeholder="Your content here"
+        ></textarea>
+      </label>
     </div>
   );
 }

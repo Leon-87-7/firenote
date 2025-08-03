@@ -5,9 +5,9 @@ import NoteEditor from '../components/NoteEditor';
 function NoteEditPage({ notes, onUpdateNote, showSaved }) {
   const navigate = useNavigate();
   const { id } = useParams();
-  
+
   const noteId = parseInt(id);
-  const selectedNote = notes.find(note => note.id === noteId);
+  const selectedNote = notes.find((note) => note.id === noteId);
 
   const handleBack = () => {
     navigate('/');
@@ -17,6 +17,7 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
     return (
       <div className="mobile-editor">
         <Logo onBack={handleBack} />
+        <div className="border-t border-accent " />
         <div className="p-4 text-center">
           <p>Note not found</p>
         </div>
@@ -30,6 +31,7 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
         onBack={handleBack}
         showSaved={showSaved}
       />
+      <div className="border-t border-accent " />
       <NoteEditor
         note={selectedNote}
         onUpdateNote={onUpdateNote}
