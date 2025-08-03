@@ -12,10 +12,9 @@ function SideMenu({
   return (
     <div className="side-menu flex flex-col">
       {!isMobile && <Logo />}
+      {isMobile && <div className="border-t border-accent " />}
 
-      <div className="flex flex-col ">
-        <AddBtn onAddNote={onAddNote} />
-      </div>
+      <AddBtn onAddNote={onAddNote} />
       <NotesList
         notes={notes}
         selectedNoteId={selectedNoteId}

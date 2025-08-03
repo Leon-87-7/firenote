@@ -47,7 +47,7 @@ function NoteEditor({ note, onUpdateNote }) {
             <span className="label-text">Note:</span>
           </div>
           <textarea
-            className="textarea textarea-bordered h-24"
+            className="textarea textarea-bordered h-24 resize-none rounded-md"
             value={content}
             onChange={(e) => setContent(e.target.value)}
             onBlur={handleContentBlur}

@@ -1,7 +1,7 @@
 function AddBtn({ onAddNote }) {
   return (
     <button
-      className="btn btn-accent capitalize w-32 ml-40 mt-10"
+      className="btn btn-accent capitalize w-32 ml-40 mt-4"
       onClick={onAddNote}
     >
       <img

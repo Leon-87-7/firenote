@@ -6,12 +6,13 @@ import NoteEditPage from './pages/NoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
 
 function AppRoutes() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 770);
-  const { notes, selectedNoteId, showSaved, addNote, updateNote } = useNotes();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const { notes, selectedNoteId, showSaved, addNote, updateNote } =
+    useNotes();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 770);
+      setIsMobile(window.innerWidth < 768);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -20,24 +21,24 @@ function AppRoutes() {
   if (isMobile) {
     return (
       <Routes>
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
-            <NotesListPage 
-              notes={notes} 
-              onAddNote={addNote} 
+            <NotesListPage
+              notes={notes}
+              onAddNote={addNote}
             />
-          } 
+          }
         />
-        <Route 
-          path="/note/:id" 
+        <Route
+          path="/note/:id"
           element={
-            <NoteEditPage 
-              notes={notes} 
+            <NoteEditPage
+              notes={notes}
               onUpdateNote={updateNote}
               showSaved={showSaved}
             />
-          } 
+          }
         />
       </Routes>
     );
@@ -45,29 +46,29 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route 
-        path="/" 
+      <Route
+        path="/"
         element={
-          <DesktopLayout 
+          <DesktopLayout
             notes={notes}
             selectedNoteId={selectedNoteId}
             onAddNote={addNote}
             onUpdateNote={updateNote}
             showSaved={showSaved}
           />
-        } 
+        }
       />
-      <Route 
-        path="/note/:id" 
+      <Route
+        path="/note/:id"
         element={
-          <DesktopLayout 
+          <DesktopLayout
             notes={notes}
             selectedNoteId={selectedNoteId}
             onAddNote={addNote}
             onUpdateNote={updateNote}
             showSaved={showSaved}
           />
-        } 
+        }
       />
     </Routes>
   );

@@ -18,7 +18,7 @@ function NotesList({
         >
           <span className="note-title">{displayTitle(note)}</span>
           {isMobile ? (
-            <span className="edit-label">Edit</span>
+            <span className="edit-label ml-2">Edit</span>
           ) : (
             <span className="arrow"> › </span>
           )}
