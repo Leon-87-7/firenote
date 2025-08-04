@@ -27,12 +27,10 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
 
   return (
     <div className="mobile-editor">
-      <Logo
-        onBack={handleBack}
-        showSaved={showSaved}
-      />
+      <Logo onBack={handleBack} />
       <div className="border-t border-accent " />
       <NoteEditor
+        showSaved={showSaved}
         note={selectedNote}
         onUpdateNote={onUpdateNote}
       />

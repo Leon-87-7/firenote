@@ -1,8 +1,7 @@
-import SavedIndicator from './SavedIndicator';
 import '../../public/note.svg';
 import { ArrowFatLineLeft } from 'phosphor-react';
 
-export default function Logo({ onBack, showSaved }) {
+export default function Logo({ onBack }) {
   return (
     <div className="flex m-3">
       {onBack && (
@@ -25,7 +24,6 @@ export default function Logo({ onBack, showSaved }) {
       <span className="text-4xl font-medium text-primary-content pt-1">
         My Notes App
       </span>
-      {showSaved && <SavedIndicator />}
     </div>
   );
 }

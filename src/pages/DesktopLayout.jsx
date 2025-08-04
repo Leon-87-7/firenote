@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from 'react-router';
 import SideMenu from '../components/SideMenu';
 import NoteEditor from '../components/NoteEditor';
-import SavedIndicator from '../components/SavedIndicator';
 
 function DesktopLayout({
   notes,
@@ -40,8 +39,8 @@ function DesktopLayout({
         isMobile={false}
       />
       <div className="card">
-        {showSaved && <SavedIndicator />}
         <NoteEditor
+          showSaved={showSaved}
           note={selectedNote}
           onUpdateNote={onUpdateNote}
         />

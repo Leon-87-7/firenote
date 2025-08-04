@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import SavedIndicator from '../components/SavedIndicator';
 
-function NoteEditor({ note, onUpdateNote }) {
+function NoteEditor({ note, onUpdateNote, showSaved }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -27,39 +28,42 @@ function NoteEditor({ note, onUpdateNote }) {
   };
 
   return (
-    <div className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
-      <label className="form-control">
-        <div className="label">
-          <span className="label-text font-medium text-lg">
-            Title:
-          </span>
-        </div>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          onBlur={handleTitleBlur}
-          placeholder="Your title here"
-          className="input input-bordered w-full max-md:input-secondary "
-        />
-      </label>
+    <>
+      {showSaved && <SavedIndicator />}
+      <div className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
+        <label className="form-control">
+          <div className="label">
+            <span className="label-text font-medium text-lg">
+              Title:
+            </span>
+          </div>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onBlur={handleTitleBlur}
+            placeholder="Your title here"
+            className="input input-bordered w-full max-md:input-secondary "
+          />
+        </label>
 
-      <label className="form-control flex-1 flex flex-col">
-        <div className="label">
-          <span className="label-text font-medium text-lg">
-            Note:
-          </span>
-        </div>
-        <textarea
-          className="textarea textarea-bordered w-full flex-1 resize-none rounded-lg max-md:textarea-accent"
-          style={{ minHeight: '37rem' }}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          onBlur={handleContentBlur}
-          placeholder="Your content here"
-        ></textarea>
-      </label>
-    </div>
+        <label className="form-control flex-1 flex flex-col">
+          <div className="label">
+            <span className="label-text font-medium text-lg">
+              Note:
+            </span>
+          </div>
+          <textarea
+            className="textarea textarea-bordered w-full flex-1 resize-none rounded-lg max-md:textarea-accent"
+            style={{ minHeight: '37rem' }}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            onBlur={handleContentBlur}
+            placeholder="Your content here"
+          ></textarea>
+        </label>
+      </div>
+    </>
   );
 }
 
