@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import SavedIndicator from '../components/SavedIndicator';
+import toast from 'react-hot-toast';
 
 function NoteEditor({ note, onUpdateNote, showSaved }) {
   const [title, setTitle] = useState('');
@@ -15,6 +15,26 @@ function NoteEditor({ note, onUpdateNote, showSaved }) {
     }
   }, [note]);
 
+  useEffect(() => {
+    if (showSaved) {
+      toast.success('saved!', {
+        position: 'top-right',
+        style: {
+          border: '1px solid #713200',
+          borderRadius: '10px',
+          fontSize: '1rem',
+          fontWeight: 'bold',
+          padding: '8px',
+          color: '#8c4853',
+        },
+        iconTheme: {
+          primary: '#16a34a',
+          secondary: '#FFFAEE',
+        },
+      });
+    }
+  }, [showSaved]);
+
   const handleTitleBlur = () => {
     if (note && title !== note.title) {
       onUpdateNote(note.id, 'title', title);
@@ -29,7 +49,6 @@ function NoteEditor({ note, onUpdateNote, showSaved }) {
 
   return (
     <>
-      {showSaved && <SavedIndicator />}
       <div className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
         <label className="form-control">
           <div className="label">

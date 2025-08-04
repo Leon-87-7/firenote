@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router';
 import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { NotesProvider, useNotes } from './context/NotesContext';
 import NotesListPage from './pages/NotesListPage';
 import NoteEditPage from './pages/NoteEditPage';
@@ -77,6 +78,7 @@ function AppRoutes() {
 function App() {
   return (
     <NotesProvider>
+      <Toaster />
       <AppRoutes />
     </NotesProvider>
   );
