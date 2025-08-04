@@ -10,7 +10,8 @@ function NotesList({ notes, onSelectNote, isMobile }) {
       {notes.map((note) => (
         <div
           key={note.id}
-          className="flex justify-between items-center pl-5 py-2 w-full border-t border-slate-800/15"
+          className="flex justify-between items-center pl-5 py-2 w-full border-t border-primary-content/15
+          last:border-b"
         >
           <span className="p-1">{displayTitle(note)}</span>
           {isMobile ? (

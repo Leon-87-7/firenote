@@ -11,7 +11,7 @@ function SideMenu({
   isMobile,
 }) {
   return (
-    <div className="side-menu relative flex flex-col shadow-[4px_0_6px_-1px_rgba(0,0,0,0.1)] h-screen">
+    <div className="h-screen relative flex flex-col border-r border-r-primary-content/20 shadow-[4px_0_6px_2px_rgba(0,0,0,0.1)]">
       {isMobile ? <MobileLogo /> : <DeskLogo />}
 
       {isMobile && <div className="border-t border-accent " />}

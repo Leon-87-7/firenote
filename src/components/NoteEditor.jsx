@@ -50,7 +50,7 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
 
   return (
     <>
-      <div className="h-full flex flex-col mx-8 mb-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
+      <div className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl max-md:shadow-none shadow-md shadow-primary-content">
         {!isMobile && <ThemeToggle />}
         <label className="form-control">
           <div className="label">
@@ -76,7 +76,7 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
           </div>
           <textarea
             className="textarea textarea-bordered w-full flex-1 resize-none rounded-lg max-md:textarea-accent"
-            style={{ minHeight: '37rem' }}
+            style={{ minHeight: '34rem' }}
             value={content}
             onChange={(e) => setContent(e.target.value)}
             onBlur={handleContentBlur}
