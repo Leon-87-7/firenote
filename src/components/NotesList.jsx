@@ -15,7 +15,7 @@ function NotesList({ notes, onSelectNote, isMobile }) {
         >
           <span className="p-1">{displayTitle(note)}</span>
           {isMobile ? (
-            <div className="flex items-center btn-ghost cursor-pointer hover:bg-base-200 rounded">
+            <div className="flex items-center btn-ghost cursor-pointer hover:bg-base-200 rounded mr-6">
               <span className="p-1">Edit</span>
               <span className="mr-1">
                 <CaretRight size={20} />
