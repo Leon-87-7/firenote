@@ -8,17 +8,14 @@ import NoteEditPage from './pages/NoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
 
 function AppRoutes() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const { notes, selectedNoteId, showSaved, addNote, updateNote } =
-    useNotes();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const {
+    notes,
+    selectedNoteId,
+    showSaved,
+    addNote,
+    updateNote,
+    isMobile,
+  } = useNotes();
 
   if (isMobile) {
     return (

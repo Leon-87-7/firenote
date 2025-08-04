@@ -1,8 +1,14 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 const NotesContext = createContext();
 
 export function NotesProvider({ children }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [notes, setNotes] = useState([]);
   const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [showSaved, setShowSaved] = useState(false);
@@ -13,6 +19,14 @@ export function NotesProvider({ children }) {
       const parsedNotes = JSON.parse(savedNotes);
       setNotes(parsedNotes);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const saveNotesToLocalStorage = (updatedNotes) => {
@@ -54,6 +68,7 @@ export function NotesProvider({ children }) {
     addNote,
     updateNote,
     setSelectedNoteId,
+    isMobile,
   };
 
   return (

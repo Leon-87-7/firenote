@@ -33,6 +33,7 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
         showSaved={showSaved}
         note={selectedNote}
         onUpdateNote={onUpdateNote}
+        isMobile={true}
       />
     </div>
   );
