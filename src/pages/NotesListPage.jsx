@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router';
-import Logo from '../components/Logo';
 import SideMenu from '../components/SideMenu';
 
 function NotesListPage({ notes, onAddNote }) {
@@ -16,7 +15,6 @@ function NotesListPage({ notes, onAddNote }) {
 
   return (
     <div className="mobile-list">
-      <Logo />
       <SideMenu
         notes={notes}
         onAddNote={handleAddNote}

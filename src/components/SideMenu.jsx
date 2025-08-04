@@ -1,5 +1,6 @@
 import AddBtn from './AddBtn';
-import Logo from './Logo';
+import MobileLogo from './MobileLogo';
+import DeskLogo from './DeskLogo';
 import NotesList from './NotesList';
 
 function SideMenu({
@@ -11,7 +12,8 @@ function SideMenu({
 }) {
   return (
     <div className="side-menu relative flex flex-col shadow-[4px_0_6px_-1px_rgba(0,0,0,0.1)] h-screen">
-      {!isMobile && <Logo />}
+      {isMobile ? <MobileLogo /> : <DeskLogo />}
+
       {isMobile && <div className="border-t border-accent " />}
 
       <AddBtn onAddNote={onAddNote} />

@@ -28,7 +28,7 @@ function DesktopLayout({
 
   return (
     <div
-      className="grid"
+      className="grid relative"
       style={{ gridTemplateColumns: '350px 1fr' }}
     >
       <SideMenu

@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router';
-import Logo from '../components/Logo';
+import Logo from '../components/MobileLogo';
 import NoteEditor from '../components/NoteEditor';
 
 function NoteEditPage({ notes, onUpdateNote, showSaved }) {
