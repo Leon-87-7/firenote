@@ -28,7 +28,7 @@ function DesktopLayout({
 
   return (
     <div
-      className="grid relative"
+      className="grid"
       style={{ gridTemplateColumns: '350px 1fr' }}
     >
       <SideMenu
@@ -43,6 +43,7 @@ function DesktopLayout({
           showSaved={showSaved}
           note={selectedNote}
           onUpdateNote={onUpdateNote}
+          isMobile={false}
         />
       </div>
     </div>

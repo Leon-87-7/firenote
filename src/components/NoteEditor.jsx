@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import ThemeToggle from './ThemeToggle';
 
-function NoteEditor({ note, onUpdateNote, showSaved }) {
+function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -49,7 +50,8 @@ function NoteEditor({ note, onUpdateNote, showSaved }) {
 
   return (
     <>
-      <div className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
+      <div className="h-full flex flex-col mx-8 mb-4 p-8 rounded-3xl max-md:shadow-none shadow-xl">
+        {!isMobile && <ThemeToggle />}
         <label className="form-control">
           <div className="label">
             <span className="label-text font-medium text-lg">

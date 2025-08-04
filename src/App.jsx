@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router';
 import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { NotesProvider, useNotes } from './context/NotesContext';
+import { ThemeProvider } from './context/ThemeContext';
 import NotesListPage from './pages/NotesListPage';
 import NoteEditPage from './pages/NoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
@@ -77,10 +78,12 @@ function AppRoutes() {
 
 function App() {
   return (
-    <NotesProvider>
-      <Toaster />
-      <AppRoutes />
-    </NotesProvider>
+    <ThemeProvider>
+      <NotesProvider>
+        <Toaster />
+        <AppRoutes />
+      </NotesProvider>
+    </ThemeProvider>
   );
 }
 

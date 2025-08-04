@@ -1,25 +1,8 @@
-import { useState, useEffect } from 'react';
 import { Sun, Moon } from 'phosphor-react';
+import { useTheme } from '../context/ThemeContext';
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState('cordovanChalkTheme');
-
-  useEffect(() => {
-    const currentTheme =
-      localStorage.getItem('theme') || 'cordovanChalkTheme';
-    setTheme(currentTheme);
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme =
-      theme === 'cordovanChalkTheme'
-        ? 'brownPinkRoseTheme'
-        : 'cordovanChalkTheme';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
