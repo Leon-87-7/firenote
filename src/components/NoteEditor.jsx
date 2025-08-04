@@ -51,7 +51,8 @@ function NoteEditor({ note, onUpdateNote }) {
           </span>
         </div>
         <textarea
-          className="textarea textarea-bordered w-full resize-none rounded-md max-md:textarea-accent flex-1 max-md:h-full min-h-0"
+          className="textarea textarea-bordered w-full flex-1 resize-none rounded-lg max-md:textarea-accent"
+          style={{ minHeight: '37rem' }}
           value={content}
           onChange={(e) => setContent(e.target.value)}
           onBlur={handleContentBlur}

@@ -30,7 +30,7 @@ function DesktopLayout({
   return (
     <div
       className="grid"
-      style={{ gridTemplateColumns: '320px 1fr' }}
+      style={{ gridTemplateColumns: '350px 1fr' }}
     >
       <SideMenu
         notes={notes}
