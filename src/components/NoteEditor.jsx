@@ -16,21 +16,33 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     }
   }, [note]);
 
+  const getThemeColor = (colorProp) => {
+    const computedStyle = getComputedStyle(document.documentElement);
+    return computedStyle.getPropertyValue(colorProp).trim();
+  };
+
   useEffect(() => {
     if (showSaved) {
+      const secondary = getThemeColor('--s');
+      const accent = getThemeColor('--a');
+      const neutral = getThemeColor('--n');
+      const success = getThemeColor('--su');
+      const warningContent = getThemeColor('--wac');
+
       toast.success('saved!', {
         position: 'top-right',
         style: {
-          border: '1px solid #713200',
+          border: `1px solid oklch(${warningContent})`,
           borderRadius: '10px',
           fontSize: '1rem',
           fontWeight: 'bold',
           padding: '8px',
-          color: '#8c4853',
+          color: `oklch(${accent})`,
+          backgroundColor: `oklch(${neutral})`,
         },
         iconTheme: {
-          primary: '#16a34a',
-          secondary: '#FFFAEE',
+          primary: `oklch(${success})`,
+          secondary: `oklch(${neutral})`,
         },
       });
     }
