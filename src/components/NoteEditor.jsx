@@ -40,10 +40,12 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     boxShadow: `0px 0px 11px -3px ${getShadowColor(theme)}`,
   };
 
+  const positionValue = isMobile ? 'top-center' : 'top-right';
+
   useEffect(() => {
     if (showSaved) {
       toast.success('saved!', {
-        position: 'top-right',
+        position: `${positionValue}`,
         style: {
           border: `1px solid oklch(${warningContent})`,
           borderRadius: '10px',
