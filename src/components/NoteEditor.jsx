@@ -33,11 +33,11 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   const getShadowColor = (currentTheme) => {
     return currentTheme === 'cordovanChalkTheme'
       ? `rgba(41, 37, 36, 0.3)`
-      : `rgba(240, 227, 224, 0.2)`;
+      : `rgba(240, 239, 205, 0.2)`;
   };
 
   const shadowBoxStyle = {
-    boxShadow: `0px 0px 11px -5px ${getShadowColor(theme)}`,
+    boxShadow: `0px 0px 11px -3px ${getShadowColor(theme)}`,
   };
 
   useEffect(() => {
