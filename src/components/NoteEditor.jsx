@@ -79,7 +79,7 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     // Mobile screen
     return (
       <>
-        <div className="h-full flex flex-col pl-4 pr-6 max-md:shadow-none">
+        <div className="h-full flex flex-col pl-4 pr-6 max-md:shadow-none min-h-0">
           <label className="form-control">
             <div className="label">
               <span className="label-text font-medium text-lg">
@@ -96,15 +96,14 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
             />
           </label>
 
-          <label className="form-control flex-1 flex flex-col mt-2">
+          <label className="form-control flex-1 flex flex-col mt-2 min-h-0">
             <div className="label">
               <span className="label-text font-medium text-lg">
                 Note:
               </span>
             </div>
             <textarea
-              className="textarea textarea-bordered w-full flex-1 resize-none rounded-lg textarea-accent"
-              style={{ minHeight: '28rem' }}
+              className="textarea textarea-bordered w-full resize-none rounded-lg textarea-accent flex-1 min-h-0 mb-5"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               onBlur={handleContentBlur}

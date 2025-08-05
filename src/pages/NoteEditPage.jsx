@@ -15,7 +15,7 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
 
   if (!selectedNote) {
     return (
-      <div className="mobile-editor">
+      <div className="h-screen flex flex-col overflow-hidden">
         <Logo onBack={handleBack} />
         <div className="border-t border-accent " />
         <div className="p-4 text-center">
@@ -26,15 +26,17 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
   }
 
   return (
-    <div className="mobile-editor">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Logo onBack={handleBack} />
       <div className="border-t border-accent " />
-      <NoteEditor
-        showSaved={showSaved}
-        note={selectedNote}
-        onUpdateNote={onUpdateNote}
-        isMobile={true}
-      />
+      <div className="flex-1 min-h-0">
+        <NoteEditor
+          showSaved={showSaved}
+          note={selectedNote}
+          onUpdateNote={onUpdateNote}
+          isMobile={true}
+        />
+      </div>
     </div>
   );
 }
