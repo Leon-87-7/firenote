@@ -39,8 +39,6 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   const shadowBoxStyle = {
     boxShadow: `0px 0px 11px -5px ${getShadowColor(theme)}`,
   };
-  console.log('Current theme:', theme);
-  console.log('Shadow style:', shadowBoxStyle);
 
   useEffect(() => {
     if (showSaved) {
