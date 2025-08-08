@@ -26,6 +26,7 @@ function DesktopLayout({
     navigate(`/note/${newNote.id}`);
   };
 
+  //tow col grid
   return (
     <div
       className="grid"

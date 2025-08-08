@@ -13,6 +13,7 @@ function NotesListPage({ notes, onAddNote }) {
     navigate(`/note/${newNote.id}`);
   };
 
+  //mobile list+addBtn layout
   return (
     <div className="mobile-list">
       <SideMenu

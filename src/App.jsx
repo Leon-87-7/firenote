@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router';
-import { useEffect, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { NotesProvider, useNotes } from './context/NotesContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -7,7 +6,9 @@ import NotesListPage from './pages/NotesListPage';
 import NoteEditPage from './pages/NoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
 
+//route component
 function AppRoutes() {
+  // context plater
   const {
     notes,
     selectedNoteId,
@@ -17,6 +18,7 @@ function AppRoutes() {
     isMobile,
   } = useNotes();
 
+  //mobile routes
   if (isMobile) {
     return (
       <Routes>
@@ -43,6 +45,7 @@ function AppRoutes() {
     );
   }
 
+  //desktop routes
   return (
     <Routes>
       <Route
@@ -73,6 +76,7 @@ function AppRoutes() {
   );
 }
 
+//main app
 function App() {
   return (
     <ThemeProvider>

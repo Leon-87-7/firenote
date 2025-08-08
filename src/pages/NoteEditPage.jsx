@@ -13,18 +13,22 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
     navigate('/');
   };
 
+  //note error 404
   if (!selectedNote) {
     return (
       <div className="h-screen flex flex-col overflow-hidden">
         <Logo onBack={handleBack} />
         <div className="border-t border-accent " />
         <div className="p-4 text-center">
-          <p>Note not found</p>
+          <p>
+            <b>404:</b> Note not found
+          </p>
         </div>
       </div>
     );
   }
 
+  //mobile editor layout
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       <Logo onBack={handleBack} />

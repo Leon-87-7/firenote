@@ -13,6 +13,7 @@ export function NotesProvider({ children }) {
   const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [showSaved, setShowSaved] = useState(false);
 
+  // Load notes
   useEffect(() => {
     const savedNotes = localStorage.getItem('notes');
     if (savedNotes) {
@@ -21,6 +22,7 @@ export function NotesProvider({ children }) {
     }
   }, []);
 
+  // resize listener
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -29,10 +31,12 @@ export function NotesProvider({ children }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  //save helper func
   const saveNotesToLocalStorage = (updatedNotes) => {
     localStorage.setItem('notes', JSON.stringify(updatedNotes));
   };
 
+  //create note
   const addNote = () => {
     const newNote = {
       id: Date.now(),
@@ -49,6 +53,7 @@ export function NotesProvider({ children }) {
     return newNote;
   };
 
+  //update note
   const updateNote = (id, field, value) => {
     const updatedNotes = notes.map((note) =>
       note.id === id ? { ...note, [field]: value } : note
@@ -58,9 +63,10 @@ export function NotesProvider({ children }) {
 
     // Show saved indicator
     setShowSaved(true);
-    setTimeout(() => setShowSaved(false), 2000);
+    setTimeout(() => setShowSaved(false), 3000);
   };
 
+  //provider values/props
   const value = {
     notes,
     selectedNoteId,
@@ -71,6 +77,7 @@ export function NotesProvider({ children }) {
     isMobile,
   };
 
+  //provider wrapper
   return (
     <NotesContext.Provider value={value}>
       {children}
@@ -78,6 +85,7 @@ export function NotesProvider({ children }) {
   );
 }
 
+//custom hook of the noteContext
 export function useNotes() {
   const context = useContext(NotesContext);
   if (!context) {
