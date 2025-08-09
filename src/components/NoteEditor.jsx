@@ -24,6 +24,9 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     return value;
   };
 
+  /*TODO refactor the colors:
+  make a @theme{}
+  https://tailwindcss.com/docs/theme */
   // const secondary = getThemeColor('--s');
   const accent = getThemeColor('--a');
   const neutral = getThemeColor('--n');
