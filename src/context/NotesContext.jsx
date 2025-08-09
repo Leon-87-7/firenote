@@ -41,6 +41,7 @@ export function NotesProvider({ children }) {
     const newNote = {
       id: Date.now(),
       title: '',
+      priority: 'low',
       content: '',
       createdAt: new Date().toISOString(),
     };

@@ -6,14 +6,17 @@ import { useTheme } from '../context/ThemeContext';
 function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   const { theme } = useTheme();
   const [title, setTitle] = useState('');
+  const [priority, setPriority] = useState('low');
   const [content, setContent] = useState('');
 
   useEffect(() => {
     if (note) {
       setTitle(note.title);
+      setPriority(note.priority);
       setContent(note.content);
     } else {
       setTitle('');
+      setPriority('low');
       setContent('');
     }
   }, [note]);
@@ -71,6 +74,11 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
       onUpdateNote(note.id, 'title', title);
     }
   };
+  const handlePriorityBlur = () => {
+    if (note && priority !== note.priority) {
+      onUpdateNote(note.id, 'priority', priority);
+    }
+  };
 
   const handleContentBlur = () => {
     if (note && content !== note.content) {
@@ -97,6 +105,31 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
               placeholder="Your title here"
               className="input input-bordered w-full input-secondary "
             />
+          </label>
+
+          <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text font-medium text-lg">
+                Priority
+              </span>
+            </div>
+            <select
+              className="select select-bordered w-full"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+              onBlur={handlePriorityBlur}
+            >
+              <option
+                disabled
+                selected
+              >
+                Set Priority
+              </option>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+            <div className="label"></div>
           </label>
 
           <label className="form-control flex-1 flex flex-col mt-2 min-h-0">
@@ -141,6 +174,31 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
             placeholder="Your title here"
             className="input input-bordered w-full"
           />
+        </label>
+
+        <label className="form-control w-full">
+          <div className="label">
+            <span className="label-text font-medium text-lg">
+              Priority
+            </span>
+          </div>
+          <select
+            className="select select-bordered w-full"
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+            onBlur={handlePriorityBlur}
+          >
+            <option
+              disabled
+              selected
+            >
+              Set Priority
+            </option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+          <div className="label"></div>
         </label>
 
         <label className="form-control flex-1 flex flex-col">
