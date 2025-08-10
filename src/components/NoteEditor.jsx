@@ -6,7 +6,7 @@ import { useTheme } from '../context/ThemeContext';
 function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   const { theme } = useTheme();
   const [title, setTitle] = useState('');
-  const [priority, setPriority] = useState('low');
+  const [priority, setPriority] = useState('');
   const [content, setContent] = useState('');
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
       setContent(note.content);
     } else {
       setTitle('');
-      setPriority('low');
+      setPriority('');
       setContent('');
     }
   }, [note]);
@@ -121,13 +121,13 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
             >
               <option
                 disabled
-                selected
+                value=""
               >
                 Set Priority
               </option>
-              <option>High</option>
-              <option>Medium</option>
-              <option>Low</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
             </select>
             <div className="label"></div>
           </label>
@@ -190,13 +190,13 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
           >
             <option
               disabled
-              selected
+              value=""
             >
               Set Priority
             </option>
-            <option>High</option>
-            <option>Medium</option>
-            <option>Low</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
           </select>
           <div className="label"></div>
         </label>

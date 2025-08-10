@@ -1,9 +1,11 @@
-import { CaretRight } from 'phosphor-react';
+import ListMapper from './ListMapper';
 
 function NotesList({ notes, onSelectNote, isMobile }) {
   const displayTitle = (note) => {
     return note.title || 'Untitled Note';
   };
+
+  const priority = 'high' || 'medium' || 'low';
 
   return (
     <div className="mt-9">
@@ -14,35 +16,30 @@ function NotesList({ notes, onSelectNote, isMobile }) {
           <div className="mt-5 text-3xl">YET!</div>
         </div>
       )}
-      {notes.map((note) => (
-        <div
-          key={note.id}
-          className="flex justify-between items-center pl-5 py-2 w-full border-t border-primary-content/15
-          last:border-b"
-        >
-          <span className="p-1">{displayTitle(note)}</span>
-          {isMobile ? (
-            <div className="flex items-center btn-ghost cursor-pointer hover:bg-base-200 rounded mr-6">
-              <span
-                className="p-1"
-                onClick={() => onSelectNote(note.id)}
-              >
-                Edit
-              </span>
-              <span className="mr-1">
-                <CaretRight size={20} />
-              </span>
-            </div>
-          ) : (
-            <span
-              className="cursor-pointer p-1 rounded mr-4"
-              onClick={() => onSelectNote(note.id)}
-            >
-              <CaretRight size={20} />
-            </span>
-          )}
-        </div>
-      ))}
+      <div>
+        <span className="list-priority-tab">high priority</span>
+        <ListMapper
+          onSelectNote={onSelectNote}
+          displayTitle={displayTitle}
+          priority={'high'}
+        />
+      </div>
+      <div>
+        <span className="list-priority-tab">medium priority</span>
+        <ListMapper
+          onSelectNote={onSelectNote}
+          displayTitle={displayTitle}
+          priority={'medium'}
+        />
+      </div>
+      <div>
+        <span className="list-priority-tab">low priority</span>
+        <ListMapper
+          onSelectNote={onSelectNote}
+          displayTitle={displayTitle}
+          priority={'low'}
+        />
+      </div>
     </div>
   );
 }
