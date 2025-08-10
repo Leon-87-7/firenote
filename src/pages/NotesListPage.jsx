@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router';
+import { useNotes } from '../context/NotesContext';
 import SideMenu from '../components/SideMenu';
 
-function NotesListPage({ notes, onAddNote }) {
+function NotesListPage() {
+  const { notes, addNote } = useNotes();
   const navigate = useNavigate();
 
   const handleSelectNote = (id) => {
@@ -9,7 +11,7 @@ function NotesListPage({ notes, onAddNote }) {
   };
 
   const handleAddNote = () => {
-    const newNote = onAddNote();
+    const newNote = addNote();
     navigate(`/note/${newNote.id}`);
   };
 

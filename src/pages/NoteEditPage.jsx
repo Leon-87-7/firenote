@@ -1,8 +1,10 @@
 import { useNavigate, useParams } from 'react-router';
+import { useNotes } from '../context/NotesContext';
 import Logo from '../components/MobileLogo';
 import NoteEditor from '../components/NoteEditor';
 
-function NoteEditPage({ notes, onUpdateNote, showSaved }) {
+function NoteEditPage() {
+  const { notes, showSaved, updateNote } = useNotes();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -37,7 +39,7 @@ function NoteEditPage({ notes, onUpdateNote, showSaved }) {
         <NoteEditor
           showSaved={showSaved}
           note={selectedNote}
-          onUpdateNote={onUpdateNote}
+          onUpdateNote={updateNote}
           isMobile={true}
         />
       </div>
