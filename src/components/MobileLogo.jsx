@@ -22,7 +22,7 @@ export default function Logo({ onBack }) {
           alt="logo"
           className="size-9 m-2"
         />
-        <span className="text-4xl font-medium text-primary-content pt-1">
+        <span className="text-4xl font-medium text-primary-content pb-1">
           My Notes App
         </span>
       </div>
