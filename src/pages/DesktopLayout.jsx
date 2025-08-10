@@ -1,14 +1,12 @@
 import { useNavigate, useParams } from 'react-router';
 import SideMenu from '../components/SideMenu';
 import NoteEditor from '../components/NoteEditor';
+import { useNotes } from '../context/NotesContext';
 
-function DesktopLayout({
-  notes,
-  selectedNoteId,
-  onAddNote,
-  onUpdateNote,
-  showSaved,
-}) {
+function DesktopLayout() {
+  const { notes, selectedNoteId, showSaved, addNote, updateNote } =
+    useNotes();
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -22,7 +20,7 @@ function DesktopLayout({
   };
 
   const handleAddNote = () => {
-    const newNote = onAddNote();
+    const newNote = addNote();
     navigate(`/note/${newNote.id}`);
   };
 
@@ -43,7 +41,7 @@ function DesktopLayout({
         <NoteEditor
           showSaved={showSaved}
           note={selectedNote}
-          onUpdateNote={onUpdateNote}
+          onUpdateNote={updateNote}
           isMobile={false}
         />
       </div>
