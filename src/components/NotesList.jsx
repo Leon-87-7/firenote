@@ -7,6 +7,13 @@ function NotesList({ notes, onSelectNote, isMobile }) {
 
   return (
     <div className="mt-9">
+      {notes.length === 0 && (
+        <div className="capitalize mt-20 text-center font-bold text-xl">
+          <div>no notes in the list...</div>
+          <br />
+          <div className="mt-5 text-3xl">YET!</div>
+        </div>
+      )}
       {notes.map((note) => (
         <div
           key={note.id}

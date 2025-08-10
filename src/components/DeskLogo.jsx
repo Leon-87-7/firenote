@@ -1,6 +1,4 @@
-import '../../public/note.svg';
-
-export default function Logo({ onBack }) {
+export default function Logo() {
   return (
     <div className="flex m-3">
       <img

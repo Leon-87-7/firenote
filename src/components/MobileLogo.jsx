@@ -1,4 +1,3 @@
-import '../../public/note.svg';
 import { ArrowFatLineLeft } from 'phosphor-react';
 import ThemeToggle from './ThemeToggle';
 
