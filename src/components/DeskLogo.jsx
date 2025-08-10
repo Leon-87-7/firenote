@@ -1,4 +1,4 @@
-import '../../src/note.svg';
+import '../../public/note.svg';
 
 export default function Logo({ onBack }) {
   return (
