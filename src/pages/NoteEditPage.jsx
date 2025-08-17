@@ -8,8 +8,7 @@ function NoteEditPage() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const noteId = parseInt(id);
-  const selectedNote = notes.find((note) => note.id === noteId);
+  const selectedNote = notes.find((note) => note.id === id);
 
   const handleBack = () => {
     navigate('/');

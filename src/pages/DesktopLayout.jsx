@@ -10,7 +10,7 @@ function DesktopLayout() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const currentNoteId = id ? parseInt(id) : selectedNoteId;
+  const currentNoteId = id || selectedNoteId;
   const selectedNote = notes.find(
     (note) => note.id === currentNoteId
   );
@@ -19,8 +19,8 @@ function DesktopLayout() {
     navigate(`/note/${noteId}`);
   };
 
-  const handleAddNote = () => {
-    const newNote = addNote();
+  const handleAddNote = async () => {
+    const newNote = await addNote();
     navigate(`/note/${newNote.id}`);
   };
 
