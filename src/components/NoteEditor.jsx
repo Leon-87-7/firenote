@@ -69,20 +69,23 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     }
   }, [showSaved, accent, neutral, success, warningContent]);
 
-  const handleTitleBlur = () => {
+  const handleTitleBlur = async () => {
     if (note && title !== note.title) {
-      onUpdateNote(note.id, 'title', title);
+      console.log('Calling onUpdateNote for title');
+      await onUpdateNote(note.id, 'title', title);
     }
   };
-  const handlePriorityBlur = () => {
+  const handlePriorityBlur = async () => {
     if (note && priority !== note.priority) {
-      onUpdateNote(note.id, 'priority', priority);
+      console.log('Calling onUpdateNote for priority');
+      await onUpdateNote(note.id, 'priority', priority);
     }
   };
 
-  const handleContentBlur = () => {
+  const handleContentBlur = async () => {
     if (note && content !== note.content) {
-      onUpdateNote(note.id, 'content', content);
+      console.log('Calling onUpdateNote for content');
+      await onUpdateNote(note.id, 'content', content);
     }
   };
 

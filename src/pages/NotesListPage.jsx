@@ -10,8 +10,8 @@ function NotesListPage() {
     navigate(`/note/${id}`);
   };
 
-  const handleAddNote = () => {
-    const newNote = addNote();
+  const handleAddNote = async () => {
+    const newNote = await addNote();
     navigate(`/note/${newNote.id}`);
   };
 
