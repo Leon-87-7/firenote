@@ -3,8 +3,8 @@ import { Toaster } from 'react-hot-toast';
 import { NotesProvider, useNotes } from './context/NotesContext';
 import { UsersProvider, useUsers } from './context/UsersContext';
 import { ThemeProvider } from './context/ThemeContext';
-import Mobile_NotesListPage from './pages/MobileNotesListPage';
-import Mobile_NotesEditPage from './pages/MobileMobileNoteEditPage';
+import Mobile_NotesListPage from './pages/MobileNoteEditPage';
+import Mobile_NotesEditPage from './pages/MobileNoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
 
 //route component

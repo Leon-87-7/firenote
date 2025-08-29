@@ -158,7 +158,7 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     // Desktop screen
     <>
       <div
-        className="h-full flex flex-col mx-8 my-4 p-8 rounded-3xl"
+        className="h-full flex flex-col mx-8 mt-14 mb-4 p-8 rounded-3xl"
         style={shadowBoxStyle}
         // shadow-md shadow-primary-content"
       >
