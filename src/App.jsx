@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router';
 import { Toaster } from 'react-hot-toast';
 import { NotesProvider, useNotes } from './context/NotesContext';
+import { UsersProvider, useUsers } from './context/UsersContext';
 import { ThemeProvider } from './context/ThemeContext';
-import NotesListPage from './pages/NotesListPage';
-import NoteEditPage from './pages/NoteEditPage';
+import Mobile_NotesListPage from './pages/MobileNotesListPage';
+import Mobile_NotesEditPage from './pages/MobileMobileNoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
 
 //route component
@@ -11,12 +12,14 @@ function AppRoutes() {
   // context plater
   const {
     notes,
+    addNote,
     selectedNoteId,
     showSaved,
-    addNote,
     updateNote,
     isMobile,
   } = useNotes();
+
+  const { users, addUsers, SelectedUserId } = useUsers();
 
   //mobile routes
   if (isMobile) {
@@ -25,7 +28,7 @@ function AppRoutes() {
         <Route
           path="/"
           element={
-            <NotesListPage
+            <Mobile_NotesListPage
               notes={notes}
               onAddNote={addNote}
             />
@@ -34,7 +37,7 @@ function AppRoutes() {
         <Route
           path="/note/:id"
           element={
-            <NoteEditPage
+            <Mobile_NotesEditPage
               notes={notes}
               onUpdateNote={updateNote}
               showSaved={showSaved}
@@ -80,10 +83,12 @@ function AppRoutes() {
 function App() {
   return (
     <ThemeProvider>
-      <NotesProvider>
-        <Toaster />
-        <AppRoutes />
-      </NotesProvider>
+      <UsersProvider>
+        <NotesProvider>
+          <Toaster />
+          <AppRoutes />
+        </NotesProvider>
+      </UsersProvider>
     </ThemeProvider>
   );
 }

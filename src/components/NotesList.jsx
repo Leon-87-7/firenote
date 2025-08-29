@@ -5,7 +5,7 @@ function NotesList({ notes, onSelectNote, isMobile }) {
     return note.title || 'Untitled Note';
   };
 
-  const priority = 'high' || 'medium' || 'low';
+  // const priority = 'high' || 'medium' || 'low';
 
   return (
     <div className="mt-9">
