@@ -96,17 +96,17 @@ export function NotesProvider({ children }) {
         createdAt: new Date(),
       };
 
-      const docRef = await addDoc(collection(db, 'notes'), newNote);
+      const noteRef = await addDoc(collection(db, 'notes'), newNote);
 
       const noteWithID = {
-        id: docRef.id,
+        id: noteRef.id,
         ...newNote,
         createdAt: newNote.createdAt.toISOString(),
       };
 
       const updatedNotesToLocalStorage = [noteWithID, ...notes];
       setNotes(updatedNotesToLocalStorage);
-      setSelectedNoteId(docRef.id);
+      setSelectedNoteId(noteRef.id);
       saveNotesToLocalStorage(updatedNotesToLocalStorage);
 
       return noteWithID;
