@@ -25,7 +25,9 @@ function DesktopLayout() {
 
   const handleAddNote = async () => {
     const newNote = await addNote();
-    navigate(`/note/${newNote.id}`);
+    if (newNote && newNote.id) {
+      navigate(`/note/${newNote.id}`);
+    }
   };
 
   //tow col grid

@@ -12,13 +12,17 @@ import {
   query,
   orderBy,
   getDocs,
+  doc,
+  updateDoc,
 } from 'firebase/firestore';
 
 const UsersContext = createContext();
 
 export function UsersProvider({ children }) {
   const [users, setUsers] = useState([]);
-  const [SelectedUserId, setSelectedUserId] = useState(null);
+  const [SelectedUserId, setSelectedUserId] = useState(() => {
+    return localStorage.getItem('selectedUserId') || null;
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -43,6 +47,11 @@ export function UsersProvider({ children }) {
         });
       });
       setUsers(firebaseUsers);
+
+      //select the first user from firebase if exist
+      if (!SelectedUserId && firebaseUsers.length > 0) {
+        setSelectedUserId(firebaseUsers[0].id);
+      }
     } catch (error) {
       console.error('Error loading users from firebase: ', error);
       setError('Failed to load users');
@@ -61,6 +70,15 @@ export function UsersProvider({ children }) {
   useEffect(() => {
     loadUsersFromFirebase();
   }, []);
+
+  // Save selected user to LS
+  useEffect(() => {
+    if (SelectedUserId) {
+      localStorage.setItem('selectedUserId', SelectedUserId);
+    } else {
+      localStorage.removeItem('selectedUserId');
+    }
+  }, [SelectedUserId]);
 
   //backup save func to LS
   const saveUsersToLocalStorage = (updatedUsers) => {
@@ -95,10 +113,34 @@ export function UsersProvider({ children }) {
     }
   };
 
+  const updateUser = async (userId, name) => {
+    try {
+      const userRef = doc(db, 'users', userId);
+      await updateDoc(userRef, {
+        name: name,
+        updatedAt: new Date(),
+      });
+
+      const updatedUsers = users.map((user) =>
+        user.id === userId
+          ? { ...user, name, updatedAt: new Date().toISOString() }
+          : user
+      );
+
+      setUsers(updatedUsers);
+      saveUsersToLocalStorage(updatedUsers);
+      return true; //providing clear feedback
+    } catch (error) {
+      console.error('Error updating user: ', error);
+      setError('Failed to update user');
+      return false; //providing clear feedback
+    }
+  };
   //provider values/props
   const value = {
     users,
     addUser,
+    updateUser,
     SelectedUserId,
     setSelectedUserId,
     loading,

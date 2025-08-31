@@ -14,7 +14,10 @@ import {
   getDocs,
   updateDoc,
   doc,
+  where,
 } from 'firebase/firestore';
+
+import { useUsers } from './UsersContext';
 
 const NotesContext = createContext();
 
@@ -25,6 +28,7 @@ export function NotesProvider({ children }) {
   const [showSaved, setShowSaved] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { SelectedUserId } = useUsers();
 
   const loadNotesFromFirebase = async () => {
     try {
@@ -32,7 +36,14 @@ export function NotesProvider({ children }) {
       setError(null);
 
       const notesCollection = collection(db, 'notes');
-      const q = query(notesCollection, orderBy('createdAt', 'desc'));
+
+      const q = SelectedUserId
+        ? query(
+            notesCollection,
+            where('userId', '==', SelectedUserId), // in english: where user id is the selected user id, make the query
+            orderBy('createdAt', 'desc')
+          )
+        : query(notesCollection, orderBy('createdAt', 'desc'));
       const querySnapshot = await getDocs(q);
 
       const firebaseNotes = [];
@@ -64,10 +75,15 @@ export function NotesProvider({ children }) {
       setLoading(false);
     }
   };
-  // Load notes
+
+  // Load notes: show note when there is a user id selected, else show empty notes array
   useEffect(() => {
-    loadNotesFromFirebase();
-  }, []);
+    if (SelectedUserId) {
+      loadNotesFromFirebase();
+    } else {
+      setNotes([]);
+    }
+  }, [SelectedUserId]);
 
   // resize listener
   useEffect(() => {
@@ -88,11 +104,17 @@ export function NotesProvider({ children }) {
 
   //create note -> now it's async function
   const addNote = async () => {
+    if (!SelectedUserId) {
+      setError('First select a user, please 🙏');
+      return;
+    }
+
     try {
       const newNote = {
         title: '',
         priority: '',
         content: '',
+        userId: SelectedUserId,
         createdAt: new Date(),
       };
 
