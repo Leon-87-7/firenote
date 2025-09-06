@@ -1,39 +1,118 @@
-# React Project
+# Notes App
 
-## Summary
+A modern, responsive notes application built with React and Firebase that supports multiple users and priority-based organization.
 
-This is your ReactJS project. Ensure that each milestone is submitted to your GitHub repository.
+## Live Demo
 
-### v1.0 5/8
+🚀 [View Live Application](https://firebase-notes-fhzmcliur-leon-87-7s-projects.vercel.app/)
 
-#### Features
+## Features
 
-- When clicking "add note" a new note will be created with an empty state.
-- Note should be saved to local storage on "blur" event.
-- When clicking on one of the notes the information of that note should be displayed on the form, and should be saved on blur.
-- After saving show the "Saved!" indication.
-- The note name on the list should be the title.
-- Build the Note app responsive UI, try and break down the UI to small components as much as you can.
-- Build the routing, make sure to notice the difference between the mobile version and the desktop version.
+### Core Functionality
+- ✨ Create, edit, and manage notes with rich text support
+- 👥 Multi-user support with individual note collections
+- 🎯 Priority-based organization (High, Medium, Low)
+- 💾 Firebase Firestore backend with localStorage fallback
+- 📱 Fully responsive design for mobile and desktop
 
-### v2.0 12/8
+### User Experience
+- 🎨 Dark/Light theme toggle with custom DaisyUI themes
+- ⚡ Real-time save indicators
+- 📋 Intuitive mobile-first navigation
+- 🖥️ Desktop sidebar layout with split-panel editing
 
-#### Features
+## Tech Stack
 
-- Add priority to the input options with the values low, medium and high
-- Sort the notes by priority
+- **Frontend**: React 19, Vite
+- **Styling**: Tailwind CSS, DaisyUI
+- **Backend**: Firebase Firestore
+- **Routing**: React Router
+- **State Management**: React Context API
+- **Icons**: Phosphor React
+- **Notifications**: React Hot Toast
 
-### v2.1 26/8
+## Getting Started
 
-#### Features
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- Firebase project with Firestore enabled
 
-- Save to firebase instead of localStorage
+### Installation
 
-### v3.0 9/9
+1. Clone the repository
+```bash
+git clone https://github.com/your-username/notes-app.git
+cd notes-app
+```
 
-#### Features
+2. Install dependencies
+```bash
+npm install
+```
 
-- Add users support, each user should have a separate list.
-- You can create a user using the users modal, the modal should show the users list as well as allow to create a new user.
-- Notice the difference in flow between the mobile version and the desktop version.
-- On the desktop version notice the user indication on the top right corner, this should show the current user
+3. Create a `.env` file in the root directory with your Firebase configuration:
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+4. Start the development server
+```bash
+npm run dev
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+├── context/            # React Context providers
+├── pages/              # Route components
+├── assets/             # Static assets
+└── App.jsx             # Main application component
+```
+
+## Development Milestones
+
+### v1.0 - Core Notes Functionality
+- Basic note creation and editing
+- Local storage persistence
+- Responsive UI design
+- Mobile/desktop routing
+
+### v2.0 - Priority System
+- Priority levels (High, Medium, Low)
+- Priority-based sorting
+
+### v2.1 - Cloud Storage
+- Firebase Firestore integration
+- Real-time data synchronization
+
+### v3.0 - Multi-User Support
+- User management system
+- Individual user note collections
+- User-specific UI flows
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
