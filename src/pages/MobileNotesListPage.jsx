@@ -21,6 +21,7 @@ function NotesListPage() {
   };
 
   const handleBackToUsers = () => {
+    navigate('/');
     setSelectedUserId(null);
   };
 

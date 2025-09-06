@@ -3,10 +3,10 @@ import { Toaster } from 'react-hot-toast';
 import { NotesProvider, useNotes } from './context/NotesContext';
 import { UsersProvider, useUsers } from './context/UsersContext';
 import { ThemeProvider } from './context/ThemeContext';
-import Mobile_NotesListPage from './pages/MobileNotesListPage';
-import Mobile_NotesEditPage from './pages/MobileNoteEditPage';
+import UserListPage from './pages/MobileUserListPage';
+import NotesListPage from './pages/MobileNotesListPage';
+import NotesEditPage from './pages/MobileNoteEditPage';
 import DesktopLayout from './pages/DesktopLayout';
-import UserListPage from './pages/UserListPage';
 
 //route component
 function AppRoutes() {
@@ -25,20 +25,17 @@ function AppRoutes() {
   //mobile routes
   if (isMobile) {
     // Show UserListPage if no user is selected
-    if (!SelectedUserId) {
-      return (
-        <Routes>
-          <Route path="*" element={<UserListPage />} />
-        </Routes>
-      );
-    }
 
     return (
       <Routes>
         <Route
           path="/"
+          element={<UserListPage />}
+        />
+        <Route
+          path="/notes"
           element={
-            <Mobile_NotesListPage
+            <NotesListPage
               notes={notes}
               onAddNote={addNote}
             />
@@ -47,7 +44,7 @@ function AppRoutes() {
         <Route
           path="/note/:id"
           element={
-            <Mobile_NotesEditPage
+            <NotesEditPage
               notes={notes}
               onUpdateNote={updateNote}
               showSaved={showSaved}

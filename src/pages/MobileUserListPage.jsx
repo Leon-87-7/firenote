@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useUsers } from '../context/UsersContext';
-import UserModal from '../components/UserModal';
+import UserModal from '../components/MobileUserModal';
 import MobileLogo from '../components/MobileLogo';
 import { CaretRight } from 'phosphor-react';
 
@@ -12,7 +12,7 @@ function UserListPage() {
 
   const handleUserSelect = (userId) => {
     setSelectedUserId(userId);
-    navigate('/');
+    navigate('/notes');
   };
 
   const handleAddUser = () => {
@@ -25,7 +25,7 @@ function UserListPage() {
 
   const handleUserCreated = () => {
     setIsModalOpen(false);
-    navigate('/');
+    navigate('/notes');
   };
 
   return (

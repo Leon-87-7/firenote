@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useNotes } from '../context/NotesContext';
-import { ArrowLeft, CaretDown } from 'phosphor-react';
+import { ArrowLeft } from 'phosphor-react';
 import ThemeToggle from '../components/ThemeToggle';
 import SavedToast from '../components/SavedToast';
 
@@ -29,7 +29,7 @@ function NoteEditPage() {
   }, [selectedNote]);
 
   const handleBack = () => {
-    navigate('/');
+    navigate('/notes');
   };
 
   const handleTitleBlur = () => {
