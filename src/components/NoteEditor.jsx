@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import toast from 'react-hot-toast';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '../context/ThemeContext';
+import SavedToast from './SavedToast';
 
 function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   const { theme } = useTheme();
@@ -11,30 +11,11 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
 
   useEffect(() => {
     if (note) {
-      setTitle(note.title);
-      setPriority(note.priority);
-      setContent(note.content);
-    } else {
-      setTitle('');
-      setPriority('');
-      setContent('');
+      setTitle(note.title || '');
+      setPriority(note.priority || '');
+      setContent(note.content || '');
     }
   }, [note]);
-
-  const getThemeColor = (colorProp) => {
-    const computedStyle = getComputedStyle(document.documentElement);
-    const value = computedStyle.getPropertyValue(colorProp).trim();
-    return value;
-  };
-
-  /*TODO refactor the colors:
-  make a @theme{}
-  https://tailwindcss.com/docs/theme */
-  // const secondary = getThemeColor('--s');
-  const accent = getThemeColor('--a');
-  const neutral = getThemeColor('--n');
-  const success = getThemeColor('--su');
-  const warningContent = getThemeColor('--wac');
 
   const getShadowColor = (currentTheme) => {
     return currentTheme === 'cordovanChalkTheme'
@@ -46,35 +27,13 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     boxShadow: `0px 0px 11px -3px ${getShadowColor(theme)}`,
   };
 
-  const positionValue = isMobile ? 'top-center' : 'top-right';
-
-  useEffect(() => {
-    if (showSaved) {
-      toast.success('saved!', {
-        position: `${positionValue}`,
-        style: {
-          border: `1px solid oklch(${warningContent})`,
-          borderRadius: '10px',
-          fontSize: '1rem',
-          fontWeight: 'bold',
-          padding: '8px',
-          color: `oklch(${accent})`,
-          backgroundColor: `oklch(${neutral})`,
-        },
-        iconTheme: {
-          primary: `oklch(${success})`,
-          secondary: `oklch(${neutral})`,
-        },
-      });
-    }
-  }, [showSaved, accent, neutral, success, warningContent]);
-
   const handleTitleBlur = async () => {
     if (note && title !== note.title) {
       console.log('Calling onUpdateNote for title');
       await onUpdateNote(note.id, 'title', title);
     }
   };
+
   const handlePriorityBlur = async () => {
     if (note && priority !== note.priority) {
       console.log('Calling onUpdateNote for priority');
@@ -93,6 +52,10 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
     // Mobile screen
     return (
       <>
+        <SavedToast
+          showSaved={showSaved}
+          isMobile={true}
+        />
         <div className="h-full flex flex-col pl-4 pr-6 max-md:shadow-none min-h-0">
           <label className="form-control">
             <div className="label">
@@ -157,6 +120,10 @@ function NoteEditor({ note, onUpdateNote, showSaved, isMobile }) {
   return (
     // Desktop screen
     <>
+      <SavedToast
+        showSaved={showSaved}
+        isMobile={false}
+      />
       <div
         className="h-full flex flex-col mx-8 mt-14 mb-4 p-8 rounded-3xl"
         style={shadowBoxStyle}

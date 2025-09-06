@@ -3,20 +3,20 @@ import UserModal from './UserModal';
 import { useState } from 'react';
 
 function UserUI() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUserName, setSelectedUserName] =
     useState('user name');
 
   const handleUserSelect = (UserName) => {
     setSelectedUserName(UserName);
-    setIsOpen(false);
+    setIsModalOpen(false);
   };
   return (
     <div className="inline-flex my-3 absolute right-8">
       <button
         className="btn btn-sm btn-secondary text-accent-content aspect-video"
         onClick={() => {
-          setIsOpen(true);
+          setIsModalOpen(true);
         }}
       >
         Switch
@@ -29,10 +29,10 @@ function UserUI() {
         {selectedUserName}
       </div>
 
-      {isOpen && (
+      {isModalOpen && (
         <UserModal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
+          isModalOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
           onUserSelect={handleUserSelect}
         />
       )}

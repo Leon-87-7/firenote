@@ -8,7 +8,6 @@ function UserModal({ isOpen, onClose, onUserSelect }) {
     addUser,
     SelectedUserId,
     setSelectedUserId,
-    updateUser,
   } = useUsers();
   const [isAddingUser, setIsAddingUser] = useState(false);
   const [newUserName, setNewUserName] = useState('');
