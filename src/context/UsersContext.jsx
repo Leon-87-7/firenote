@@ -47,11 +47,6 @@ export function UsersProvider({ children }) {
         });
       });
       setUsers(firebaseUsers);
-
-      //select the first user from firebase if exist
-      if (!SelectedUserId && firebaseUsers.length > 0) {
-        setSelectedUserId(firebaseUsers[0].id);
-      }
     } catch (error) {
       console.error('Error loading users from firebase: ', error);
       setError('Failed to load users');
@@ -75,8 +70,6 @@ export function UsersProvider({ children }) {
   useEffect(() => {
     if (SelectedUserId) {
       localStorage.setItem('selectedUserId', SelectedUserId);
-    } else {
-      localStorage.removeItem('selectedUserId');
     }
   }, [SelectedUserId]);
 
@@ -86,10 +79,10 @@ export function UsersProvider({ children }) {
   };
 
   //create user
-  const addUser = async () => {
+  const addUser = async (name = '') => {
     try {
       const newUser = {
-        name: '',
+        name: name,
         createdAt: new Date(),
       };
 
@@ -101,15 +94,19 @@ export function UsersProvider({ children }) {
         createdAt: newUser.createdAt.toISOString(),
       };
 
-      const updatedUsers = [userWithID, ...users];
-      setUsers(updatedUsers);
+      setUsers((prevUsers) => {
+        const updatedUsers = [userWithID, ...prevUsers];
+        saveUsersToLocalStorage(updatedUsers);
+        return updatedUsers;
+      });
+
       setSelectedUserId(userRef.id);
-      saveUsersToLocalStorage(updatedUsers);
 
       return userWithID;
     } catch (error) {
       console.error('Error adding user to Firestore:', error);
       setError('Failed to create user');
+      return null;
     }
   };
 
@@ -121,15 +118,16 @@ export function UsersProvider({ children }) {
         updatedAt: new Date(),
       });
 
-      const updatedUsers = users.map((user) =>
-        user.id === userId
-          ? { ...user, name, updatedAt: new Date().toISOString() }
-          : user
-      );
-
-      setUsers(updatedUsers);
-      saveUsersToLocalStorage(updatedUsers);
-      return true; //providing clear feedback
+      // Use functional update to ensure we have the latest state
+      setUsers((prevUsers) => {
+        const updatedUsers = prevUsers.map((user) =>
+          user.id === userId
+            ? { ...user, name, updatedAt: new Date().toISOString() }
+            : user
+        );
+        saveUsersToLocalStorage(updatedUsers);
+        return updatedUsers;
+      });
     } catch (error) {
       console.error('Error updating user: ', error);
       setError('Failed to update user');

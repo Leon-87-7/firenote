@@ -47,10 +47,8 @@ function UserModal({ isOpen, onClose, onUserSelect }) {
 
   const handleAddUserSave = async () => {
     if (newUserName.trim()) {
-      const newUser = await addUser();
+      const newUser = await addUser(newUserName.trim());
       if (newUser) {
-        // Update the user name immediately after creation
-        await updateUser(newUser.id, newUserName.trim());
         setSelectedUserId(newUser.id);
         // Pass the new user name to the parent component
         if (onUserSelect) {
