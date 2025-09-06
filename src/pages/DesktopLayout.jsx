@@ -1,15 +1,12 @@
 import { useNavigate, useParams } from 'react-router';
 import SideMenu from '../components/SideMenu';
-import NoteEditor from '../components/NoteEditor';
+import NoteEditor from '../components/DesktopNoteEditor';
 import { useNotes } from '../context/NotesContext';
-import { useUsers } from '../context/UsersContext';
 import UserUI from '../components/UserUI';
 
 function DesktopLayout() {
   const { notes, selectedNoteId, showSaved, addNote, updateNote } =
     useNotes();
-
-  const { users, addUsers, SelectedUserId } = useUsers();
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -25,7 +22,9 @@ function DesktopLayout() {
 
   const handleAddNote = async () => {
     const newNote = await addNote();
-    navigate(`/note/${newNote.id}`);
+    if (newNote && newNote.id) {
+      navigate(`/note/${newNote.id}`);
+    }
   };
 
   //tow col grid

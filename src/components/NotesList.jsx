@@ -1,6 +1,6 @@
 import ListMapper from './ListMapper';
 
-function NotesList({ notes, onSelectNote, isMobile }) {
+function NotesList({ notes, onSelectNote }) {
   const displayTitle = (note) => {
     return note.title || 'Untitled Note';
   };
