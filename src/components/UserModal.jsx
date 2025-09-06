@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { User, Plus, X } from 'phosphor-react';
 import { useUsers } from '../context/UsersContext';
 
-function UsersModal({ isOpen, onClose }) {
+function UserModal({ isOpen, onClose, onUserSelect }) {
   const {
     users,
     addUser,
@@ -32,8 +32,13 @@ function UsersModal({ isOpen, onClose }) {
   }, [isOpen, onClose, isAddingUser]);
 
   const handleUserSelect = (userId) => {
+    const selectedUser = users.find((user) => user.id === userId);
     setSelectedUserId(userId);
-    onClose();
+    if (selectedUser && onUserSelect) {
+      onUserSelect(selectedUser.name);
+    } else {
+      onClose();
+    }
   };
 
   const handleAddUserClick = () => {
@@ -47,6 +52,10 @@ function UsersModal({ isOpen, onClose }) {
         // Update the user name immediately after creation
         await updateUser(newUser.id, newUserName.trim());
         setSelectedUserId(newUser.id);
+        // Pass the new user name to the parent component
+        if (onUserSelect) {
+          onUserSelect(newUserName.trim());
+        }
       }
     }
     setIsAddingUser(false);
@@ -108,7 +117,10 @@ function UsersModal({ isOpen, onClose }) {
                 onClick={onClose}
                 className="btn btn-ghost btn-sm btn-circle"
               >
-                <X size={16} />
+                <X
+                  size={16}
+                  weight="bold"
+                />
               </button>
             </div>
 
@@ -120,7 +132,7 @@ function UsersModal({ isOpen, onClose }) {
   transition-colors ${
     SelectedUserId === user.id
       ? 'bg-primary text-primary-content'
-      : 'hover:bg-base-200'
+      : 'hover:bg-neutral/70'
   }`}
                   onClick={() => handleUserSelect(user.id)}
                 >
@@ -128,11 +140,11 @@ function UsersModal({ isOpen, onClose }) {
                     size={20}
                     className="mr-3"
                   />
-                  <span>
-                    {user.name || `User ${user.id.slice(-4)}`}
-                  </span>
+                  <span>{user.name}</span>
                   {SelectedUserId === user.id && (
-                    <span className="ml-auto text-sm">✓</span>
+                    <span className="ml-auto text-sm font-bold">
+                      ✓
+                    </span>
                   )}
                 </div>
               ))}
@@ -140,7 +152,7 @@ function UsersModal({ isOpen, onClose }) {
 
             <button
               onClick={handleAddUserClick}
-              className="btn btn-outline w-full"
+              className="btn btn-secondary btn-outline w-full"
             >
               <Plus size={16} />
               Add User
@@ -152,4 +164,4 @@ function UsersModal({ isOpen, onClose }) {
   );
 }
 
-export default UsersModal;
+export default UserModal;
