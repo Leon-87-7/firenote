@@ -123,6 +123,7 @@ function NoteEditPage() {
             onBlur={handleTitleBlur}
             placeholder="Your title here"
             className="input input-bordered w-full input-secondary"
+            autoFocus
           />
         </div>
 

@@ -3,6 +3,7 @@ import { useNotes } from '../context/NotesContext';
 import { useUsers } from '../context/UsersContext';
 import { ArrowLeft, CaretRight } from 'phosphor-react';
 import ThemeToggle from '../components/ThemeToggle';
+import { useEffect } from 'react';
 
 function NotesListPage() {
   const { notes, addNote } = useNotes();
@@ -24,6 +25,20 @@ function NotesListPage() {
     navigate('/');
     setSelectedUserId(null);
   };
+
+  useEffect(() => {
+    const handleEnterKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        handleAddNote();
+      }
+    };
+
+    document.addEventListener('keypress', handleAddNote);
+
+    return () => {
+      document.removeEventListener('keypress', handleAddNote);
+    };
+  }, []);
 
   // Get current user name
   const currentUser = users.find(
