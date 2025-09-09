@@ -4,7 +4,7 @@ A modern, responsive notes application built with React and Firebase that suppor
 
 ## Live Demo
 
-🚀 [View Live Application](https://firebase-notes-fhzmcliur-leon-87-7s-projects.vercel.app/)
+🚀 [View Live Application](https://firenote-gray.vercel.app/)
 
 ## Features
 
