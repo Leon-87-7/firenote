@@ -26,6 +26,18 @@ export function UsersProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Load users
+  useEffect(() => {
+    loadUsersFromFirebase();
+  }, []);
+
+  // Save selected user to LS
+  useEffect(() => {
+    if (SelectedUserId) {
+      localStorage.setItem('selectedUserId', SelectedUserId);
+    }
+  }, [SelectedUserId]);
+
   const loadUsersFromFirebase = async () => {
     try {
       setLoading(true);
@@ -61,17 +73,6 @@ export function UsersProvider({ children }) {
       setLoading(false);
     }
   };
-  // Load users
-  useEffect(() => {
-    loadUsersFromFirebase();
-  }, []);
-
-  // Save selected user to LS
-  useEffect(() => {
-    if (SelectedUserId) {
-      localStorage.setItem('selectedUserId', SelectedUserId);
-    }
-  }, [SelectedUserId]);
 
   //backup save func to LS
   const saveUsersToLocalStorage = (updatedUsers) => {
