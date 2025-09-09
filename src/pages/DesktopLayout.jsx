@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router';
-import SideMenu from '../components/SideMenu';
-import NoteEditor from '../components/DesktopNoteEditor';
+import NoteEditor from '../components/DeskNoteEditor';
 import { useNotes } from '../context/NotesContext';
+import SideMenu from '../components/SideMenu';
 import UserUI from '../components/UserUI';
 
 function DesktopLayout() {

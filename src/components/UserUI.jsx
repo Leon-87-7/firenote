@@ -1,13 +1,11 @@
-import { User } from 'phosphor-react';
-import UserModal from './DesktopUserModal';
 import { useState } from 'react';
+import { User } from 'phosphor-react';
+import UserModal from './DeskUserModal';
 import { useUsers } from '../context/UsersContext';
 
 function UserUI() {
   const { users, SelectedUserId } = useUsers();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedUserName, setSelectedUserName] =
-  //   useState('user name');
 
   const currentUser = users.find(
     (user) => user.id === SelectedUserId
@@ -16,10 +14,6 @@ function UserUI() {
     ? currentUser.name
     : 'No User Selected';
 
-  // const handleUserSelect = (UserName) => {
-  //   setSelectedUserName(UserName);
-  //   setIsModalOpen(false);
-  // };
   return (
     <div className="inline-flex my-3 absolute right-8">
       <button
@@ -42,7 +36,6 @@ function UserUI() {
         <UserModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          // onUserSelect={handleUserSelect}
         />
       )}
     </div>

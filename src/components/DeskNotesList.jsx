@@ -10,13 +10,14 @@ function NotesList({ notes, onSelectNote }) {
   return (
     <div className="mt-9">
       {notes.length === 0 && (
-        <div className="capitalize mt-20 text-center font-bold text-xl">
-          <div>no notes in the list...</div>
+        <p className="flex flex-col items-center text-2xl mb-10">
+          <span className=" text-6xl">📝</span>
           <br />
-          <div className="mt-5 text-3xl">YET!</div>
-        </div>
+          <span>No notes yet</span>{' '}
+          <span>Create your first note!</span>
+        </p>
       )}
-      <div>
+      <div className="mb-2">
         <span className="list-priority-tab">high priority</span>
         <ListMapper
           onSelectNote={onSelectNote}
@@ -24,7 +25,7 @@ function NotesList({ notes, onSelectNote }) {
           priority={'high'}
         />
       </div>
-      <div>
+      <div className="mb-2">
         <span className="list-priority-tab">medium priority</span>
         <ListMapper
           onSelectNote={onSelectNote}
@@ -32,7 +33,7 @@ function NotesList({ notes, onSelectNote }) {
           priority={'medium'}
         />
       </div>
-      <div>
+      <div className="mb-2">
         <span className="list-priority-tab">low priority</span>
         <ListMapper
           onSelectNote={onSelectNote}

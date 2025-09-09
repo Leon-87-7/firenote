@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useTheme } from '../context/ThemeContext';
 
-function SavedToast({ showSaved, isMobile = false }) {
+function SavedToast({ showSaved, isMobile }) {
   const { theme } = useTheme();
 
   // Toast styling functions
@@ -45,7 +45,15 @@ function SavedToast({ showSaved, isMobile = false }) {
         },
       });
     }
-  }, [showSaved, accent, neutral, success, warningContent, positionValue, theme]);
+  }, [
+    showSaved,
+    accent,
+    neutral,
+    success,
+    warningContent,
+    positionValue,
+    theme,
+  ]);
 
   // This component doesn't render anything visible
   return null;

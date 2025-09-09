@@ -12,7 +12,6 @@ function NoteEditPage() {
 
   const selectedNote = notes.find((note) => note.id === id);
 
-  // Local state for form inputs
   const [title, setTitle] = useState(selectedNote?.title || '');
   const [priority, setPriority] = useState(
     selectedNote?.priority || ''

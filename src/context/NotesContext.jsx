@@ -30,6 +30,24 @@ export function NotesProvider({ children }) {
   const [error, setError] = useState(null);
   const { SelectedUserId } = useUsers();
 
+  // Load notes: show note when there is a user id selected, else show empty notes array
+  useEffect(() => {
+    if (SelectedUserId) {
+      loadNotesFromFirebase();
+    } else {
+      setNotes([]);
+    }
+  }, [SelectedUserId]);
+
+  // resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const loadNotesFromFirebase = async () => {
     try {
       setLoading(true);
@@ -76,29 +94,11 @@ export function NotesProvider({ children }) {
     }
   };
 
-  // Load notes: show note when there is a user id selected, else show empty notes array
-  useEffect(() => {
-    if (SelectedUserId) {
-      loadNotesFromFirebase();
-    } else {
-      setNotes([]);
-    }
-  }, [SelectedUserId]);
-
-  // resize listener
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   //backup save func to LS
-  const saveNotesToLocalStorage = (updatedNotesToLocalStorage) => {
+  const saveNotesToLocalStorage = (toLocalStorageNotes) => {
     localStorage.setItem(
       'notes',
-      JSON.stringify(updatedNotesToLocalStorage)
+      JSON.stringify(toLocalStorageNotes)
     );
   };
 
@@ -126,10 +126,10 @@ export function NotesProvider({ children }) {
         createdAt: newNote.createdAt.toISOString(),
       };
 
-      const updatedNotesToLocalStorage = [noteWithID, ...notes];
-      setNotes(updatedNotesToLocalStorage);
+      const toLocalStorageNotes = [noteWithID, ...notes];
+      setNotes(toLocalStorageNotes);
       setSelectedNoteId(noteRef.id);
-      saveNotesToLocalStorage(updatedNotesToLocalStorage);
+      saveNotesToLocalStorage(toLocalStorageNotes);
 
       return noteWithID;
     } catch (error) {
@@ -144,10 +144,10 @@ export function NotesProvider({ children }) {
         createdAt: new Date().toISOString(),
       };
 
-      const updatedNotesToLocalStorage = [newNote, ...notes];
-      setNotes(updatedNotesToLocalStorage);
+      const toLocalStorageNotes = [newNote, ...notes];
+      setNotes(toLocalStorageNotes);
       setSelectedNoteId(newNote.id);
-      saveNotesToLocalStorage(updatedNotesToLocalStorage);
+      saveNotesToLocalStorage(toLocalStorageNotes);
 
       return newNote;
     }
@@ -163,7 +163,7 @@ export function NotesProvider({ children }) {
         updatedAt: new Date(),
       });
       //update to LS
-      const updatedNotesToLocalStorage = notes.map((note) =>
+      const toLocalStorageNotes = notes.map((note) =>
         note.id === id
           ? {
               ...note,
@@ -172,8 +172,8 @@ export function NotesProvider({ children }) {
             }
           : note
       );
-      setNotes(updatedNotesToLocalStorage);
-      saveNotesToLocalStorage(updatedNotesToLocalStorage);
+      setNotes(toLocalStorageNotes);
+      saveNotesToLocalStorage(toLocalStorageNotes);
 
       // Show saved indicator
       setShowSaved(true);
@@ -183,7 +183,7 @@ export function NotesProvider({ children }) {
       setError('Failed to update note');
 
       //update to LS
-      const updatedNotesToLocalStorage = notes.map((note) =>
+      const toLocalStorageNotes = notes.map((note) =>
         note.id === id
           ? {
               ...note,
@@ -192,8 +192,8 @@ export function NotesProvider({ children }) {
             }
           : note
       );
-      setNotes(updatedNotesToLocalStorage);
-      saveNotesToLocalStorage(updatedNotesToLocalStorage);
+      setNotes(toLocalStorageNotes);
+      saveNotesToLocalStorage(toLocalStorageNotes);
 
       // Show saved indicator
       setShowSaved(true);

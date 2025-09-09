@@ -44,11 +44,14 @@ export function UsersProvider({ children }) {
       setError(null);
 
       const usersCollection = collection(db, 'users');
-      const q = query(usersCollection, orderBy('createdAt', 'desc'));
-      const querySnapshot = await getDocs(q);
+      const usersQuery = query(
+        usersCollection,
+        orderBy('createdAt', 'desc')
+      );
+      const usersSnapshot = await getDocs(usersQuery);
 
       const firebaseUsers = [];
-      querySnapshot.forEach((docSnapshot) => {
+      usersSnapshot.forEach((docSnapshot) => {
         const data = docSnapshot.data();
         firebaseUsers.push({
           id: docSnapshot.id,

@@ -10,6 +10,20 @@ function NotesListPage() {
   const { users, SelectedUserId, setSelectedUserId } = useUsers();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleEnterKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        handleAddNote();
+      }
+    };
+
+    document.addEventListener('keypress', handleAddNote);
+
+    return () => {
+      document.removeEventListener('keypress', handleAddNote);
+    };
+  }, []);
+
   const handleSelectNote = (id) => {
     navigate(`/note/${id}`);
   };
@@ -25,20 +39,6 @@ function NotesListPage() {
     navigate('/');
     setSelectedUserId(null);
   };
-
-  useEffect(() => {
-    const handleEnterKeyPress = (e) => {
-      if (e.key === 'Enter') {
-        handleAddNote();
-      }
-    };
-
-    document.addEventListener('keypress', handleAddNote);
-
-    return () => {
-      document.removeEventListener('keypress', handleAddNote);
-    };
-  }, []);
 
   // Get current user name
   const currentUser = users.find(
@@ -71,14 +71,12 @@ function NotesListPage() {
               <span className="text-base-content font-medium">
                 {note.title || 'Untitled Note'}
               </span>
-              <button className="text-neutral-content text-sm font-medium ">
-                <div className="flex items-center btn-ghost cursor-pointer  rounded mr-6">
-                  <span className="p-1">Edit</span>
-                  <span className="mr-1">
-                    <CaretRight size={20} />
-                  </span>
-                </div>
-              </button>
+              <div className="flex items-center text-neutral-content text-sm font-medium  rounded mr-6">
+                <span className="p-1">Edit</span>
+                <span className="mr-1">
+                  <CaretRight size={20} />
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -109,7 +107,6 @@ function NotesListPage() {
 
       {/* Content */}
       <div className="flex-1 p-4">
-        {/* Add Note Button */}
         <button
           onClick={handleAddNote}
           className="btn bg-gradient-to-bl from-accent to-secondary text-accent-content 
@@ -127,7 +124,12 @@ function NotesListPage() {
         {/* Empty State */}
         {notes.length === 0 && (
           <div className="text-center py-8 text-base-content/60">
-            <p>No notes yet. Create your first note!</p>
+            <p className="text-2xl">
+              <span className="text-6xl">📝</span>
+              <br />
+              <br />
+              No notes yet <br /> Create your first note!
+            </p>
           </div>
         )}
       </div>
